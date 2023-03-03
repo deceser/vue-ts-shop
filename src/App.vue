@@ -4,6 +4,7 @@ import Drawer from "./components/Drawer.vue";
 
 import { useProductsStore } from "./stores/Products";
 import { useFavoriteStore } from "./stores/Favorites";
+import { useCartStore } from "./stores/Cart";
 
 export default {
   components: { Drawer, Header },
@@ -13,6 +14,7 @@ export default {
   setup() {
     const productsStore = useProductsStore();
     const favoriteStore = useFavoriteStore();
+    const cartStore = useCartStore();
 
     productsStore.fetchItems();
 
@@ -25,8 +27,18 @@ export default {
 
     favoriteStore.setItems(favorites);
 
+    cartStore.$subscribe((mutation, state) => {
+      window.localStorage.setItem("cart", JSON.stringify(state.items));
+    });
+
+    const cartLocalStore = window.localStorage.getItem("cart");
+    const cartProducts = cartLocalStore ? JSON.parse(cartLocalStore) : [];
+
+    cartStore.setItemsCart(cartProducts);
+
     return {
       favoriteStore,
+      cartStore,
     };
   },
 };

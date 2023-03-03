@@ -1,6 +1,6 @@
 <script lang="ts">
-import { useFavoriteStore } from "../stores/Favorites";
 import Card from "../components/Card.vue";
+import { useFavoriteStore } from "../stores/Favorites";
 import { useCartStore } from "../stores/Cart";
 
 export default {

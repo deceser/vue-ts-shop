@@ -16,6 +16,10 @@ export const useCartStore = defineStore("cart", {
     },
   },
   actions: {
+    setItemsCart(items: IProduct[]) {
+      this.items = items;
+    },
+
     addItem(item: IProduct) {
       const find = this.items.find((o) => o.id === item.id);
 
