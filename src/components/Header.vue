@@ -53,7 +53,7 @@ export default defineComponent({
       <ul>
         <li @click="onClickCart" class="cartButton">
           <img src="../assets/cart.svg" />
-          <span><span ref="totalPriceRef" /> руб.</span>
+          <span><span ref="totalPriceRef" /> грн.</span>
         </li>
         <li>
           <router-link to="/favorites">

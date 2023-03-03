@@ -26,7 +26,7 @@ const cartStore = useCartStore();
 
             <div>
               <p class="cartItemTitle mb-5">{{ item.title }}</p>
-              <b>{{ item.price }} руб.</b>
+              <b>{{ item.price }} грн.</b>
             </div>
             <img @click="() => cartStore.deleteItem(item)" class="removeBtn" src="../assets/btn-remove.svg" alt="Remove" />
           </div>
@@ -36,12 +36,12 @@ const cartStore = useCartStore();
             <li>
               <span>Итого:</span>
               <div></div>
-              <b>{{ cartStore.totalPrice }} руб. </b>
+              <b>{{ cartStore.totalPrice }} грн. </b>
             </li>
             <li>
               <span>Налог 5%:</span>
               <div></div>
-              <b>{{ (cartStore.totalPrice / 100) * 5 }} руб. </b>
+              <b>{{ (cartStore.totalPrice / 100) * 5 }} грн. </b>
             </li>
           </ul>
           <button class="greenButton">Оформить заказ <img src="../assets/arrow.svg" alt="Arrow" /></button>

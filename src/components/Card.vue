@@ -24,7 +24,7 @@ defineProps<{
     <div class="details">
       <div class="price">
         <span>Цена:</span>
-        <b>{{ price }} руб.</b>
+        <b>{{ price }} грн.</b>
       </div>
       <div @click="onClickAdd?.({ id: Number(id), image, title, price })">
         <img v-if="!isAdded" class="plus" src="../assets/btn-plus.svg" alt="Plus" />
