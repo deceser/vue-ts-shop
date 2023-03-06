@@ -1,39 +1,18 @@
 <script lang="ts">
 import { useCartStore } from "../stores/Cart";
-// @ts-ignore
-import { CountUp } from "countup.js";
-import { computed, defineComponent, PropType, ref } from "vue";
+import { computed, defineComponent, PropType } from "vue";
 
 export default defineComponent({
   props: {
     onClickCart: Function as PropType<(payload: MouseEvent) => void>,
   },
-  watch: {
-    totalPrice(val: number) {
-      if (this.countUpRef) {
-        this.countUpRef.update(val);
-      }
-    },
-  },
-  mounted() {
-    if (this.totalPriceRef) {
-      this.countUpRef = new CountUp(this.totalPriceRef, 0, {
-        duration: 1,
-      });
-    }
-  },
+
   setup() {
     const cartStore = useCartStore();
-
     const totalPrice = computed(() => cartStore.totalPrice);
-
-    const totalPriceRef = ref<HTMLSpanElement | null>(null);
-    const countUpRef = ref<CountUp | null>(null);
 
     return {
       totalPrice,
-      totalPriceRef,
-      countUpRef,
     };
   },
 });
@@ -53,7 +32,7 @@ export default defineComponent({
       <ul>
         <li @click="onClickCart" class="cartButton">
           <img src="../assets/cart.svg" />
-          <span><span ref="totalPriceRef" /> грн.</span>
+          <span>{{ totalPrice }} грн.</span>
         </li>
         <li>
           <router-link to="/favorites">
